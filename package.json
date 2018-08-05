@@ -1,0 +1,29 @@
+{
+  "name": "2018Collection",
+  "version": "1.0.0",
+  "description": "2018Collection",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set NODE_ENV=dev &&  gulp",
+    "publish": "set NODE_ENV=publish && gulp",
+    "view": "set NODE_ENV=view && gulp"
+  },
+  "author": "1l3y93rmp",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^3.0.0"
+  },
+  "standard": {
+    "globals": [
+      "$",
+      "React",
+      "ReactDOM",
+      "Cookies"
+    ]
+  },
+  "dependencies": {
+    "browser-sync": "^2.24.2",
+    "del": "^3.0.0"
+  }
+}
