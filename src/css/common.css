@@ -30,21 +30,30 @@ header > h2 {
   position: fixed;
   font-family: 'Fredoka One';
   color: #d41010;
-  font-size: 22vh;
+  
   text-align: right;
-  margin: 0 20px;
-  width: calc( 100% - 40px);
+  padding: 0 20px;
+  right: 0;
   top: 0;
-  height: 100%;
-
-
   align-items: center;
   mix-blend-mode: screen;
   justify-content: center;
   background: white;
   cursor: default;
   z-index: -1;
+  box-sizing: border-box;
+  height: 100%
+
 }
+.videoMask h1{
+  font-size: 22vh;
+  margin: 0;
+  display: inline;
+  word-break: break-word;
+  line-height: 1.2em;
+  text-shadow: 7px 7px #000;
+}
+
 video { 
   position: fixed;
   top: 0;
@@ -55,6 +64,99 @@ video {
   z-index: -2;
 }
 
-section h2 {
-  font-family: 'Microsoft JhengHei'
+section>div{
+  padding: 80vh 20px 0 20px;
+  text-align: right;
+  line-height: 1.5em;
+  height: 80vh;
+  
 }
+
+section>div>h2 {
+  font-family: 'Microsoft JhengHei';
+  color: #d41010;
+  padding-top: 80vh;
+  transition: all 0.3s;
+  top: 0;
+  right: 20px;
+}
+
+section>div:nth-child(4) {
+  background-image: radial-gradient(#fff 3px, transparent 3px);
+  background-size: 12px 12px;
+  background-position: 0 0, 180px 180px;
+  grid-row: 4;
+  grid-column: 3;
+}
+section>div:nth-child(5) {
+  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/3_purple-01.jpg');
+  mix-blend-mode: multiply;
+  background-attachment: fixed;
+  background-size: contain;
+  background-repeat: no-repeat
+  
+}
+section>div:nth-child(6) {
+  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/03.jpg');
+  mix-blend-mode: multiply
+}
+section>div:nth-child(7) {
+  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/2_pink-02.jpg');
+  mix-blend-mode: multiply
+}
+
+section>div:nth-child(8) {
+  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/2_pink-03.jpg');
+  mix-blend-mode: multiply
+}
+
+section>div:nth-child(9) {
+  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/4_yellow-01.jpg');
+  mix-blend-mode: multiply
+}
+
+.Opening{
+  padding-bottom: 200vh;
+  position: relative;
+}
+
+.About{
+  position: relative;
+  z-index: 1;
+  font-family: 'Microsoft JhengHei';
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.About > p,.About > h3,.About > ul{
+  width: 62vw;
+  float: right;
+}
+
+.About > h3{
+  color: #d41010;
+  font-family: 'Fredoka One'
+}
+
+.About > p{
+  font-size: 13px;
+  line-height: 1.5em
+}
+
+.About > ul {
+  overflow: hidden;
+}
+
+.About > ul > li{
+  display: block;
+  width: 33.3%;
+  box-sizing: border-box;
+  padding: 10px;
+  float: left;
+  font-size: 11px;
+}
+
+.About > ul > li > a {
+  display: block;
+}
+
