@@ -5,6 +5,11 @@ $(function() {
     var $video = $('video')
     var $h2Title= $('section>div>h2')
     var h2OffsetTop = []
+    var $rotateGlasses = $('.rotateGlasses')
+    var $glassesWidth = $rotateGlasses.innerWidth()
+    var $go = $('.go')
+    var $window = $(window)
+    var $body = $('html, body')
 
     function chackh2TitleTop () {
         h2OffsetTop = []
@@ -17,7 +22,7 @@ $(function() {
         $videoMaskHeight = $videoMask.innerHeight()
         $videoMaskWidth = $videoMask.innerWidth()
         if ($videoMaskWidth > $videoMaskHeight) {
-            $video.attr('width', $videoMaskWidth)
+            $video.attr('width', $videoMaskWidth+20)
             $video.removeAttr('height')
         } else {
             $video.attr('height', $videoMaskHeight)
@@ -42,26 +47,69 @@ $(function() {
         }
     }
 
+    function stickyTitle (p) {
+        if (p + $(window).innerHeight() > $('.About').offset().top){
+            $('div.videoMask, video').css({
+                'bottom': 120,
+                'position': 'absolute',
+                'top': 'auto',
+                'height': 'auto'})
+        } else {
+            $('div.videoMask, video').removeAttr('style')
+        }
+    }
+
+    function gotopHover () {
+        $go.hover(function(){
+            $(this).addClass('top')
+        },function(){
+            $(this).removeClass('top')
+        })
+    }
+
     function init () {
         AOS.init()
         chackVideoMask()
         chackh2TitleTop()
-        $(window).resize(function(){
+        
+        $go.click(function(){
+            $body.stop().animate({scrollTop:0}, 800, 'swing')
+        })
+
+        $window.resize(function(){
             chackVideoMask()
             chackh2TitleTop()
         });
-
-        $(window).scroll(function(){
+        var k = 0
+        var t = 0
+        $window.scroll(function(){
             var p = $(this).scrollTop()
             opacityTitle(p)
-            if (p + $(window).innerHeight() > $('.About').offset().top){
-                $('div.videoMask, video').css({
-                    'bottom': 120,
-                    'position': 'absolute',
-                    'top': 'auto',
-                    'height': 'auto'})
-            } else {
-                $('div.videoMask, video').removeAttr('style')
+            stickyTitle(p)
+            gotopHover()
+            
+            var nowglassesPosition = $rotateGlasses.css('background-position-x')
+            
+
+            if (t <= p) { k++ } else { k-- }
+
+            if (k == 5) {
+                $rotateGlasses.css('background-position-x', parseInt(nowglassesPosition)+$glassesWidth)
+                k=0
+            }
+
+            if (k == -5) {
+                $rotateGlasses.css('background-position-x', parseInt(nowglassesPosition)-$glassesWidth)
+                k=0
+            }
+            if (Math.round(p+1) === Math.round($body.innerHeight() - $window.height())){
+                $go.off('mouseenter mouseleave')
+                $go.addClass('top')
+            }
+
+            if (p == 0){
+                $go.removeClass('top')
+                gotopHover()
             }
         });
 

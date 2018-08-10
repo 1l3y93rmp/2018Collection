@@ -78,7 +78,6 @@ gulp.task('browserSync', function () {
 })
 
 gulp.task('browserReload', function () {
-  console.log('sssssssss')
   browserSync.reload()
 })
 
