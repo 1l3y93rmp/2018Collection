@@ -1,12 +1,4 @@
 @font-face {
-  font-family: 'Fredoka One';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Fredoka One'), local('FredokaOne-Regular'), url(https://fonts.gstatic.com/s/fredokaone/v5/k3kUo8kEI-tA1RRcTZGmTlHGCac.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
@@ -29,13 +21,16 @@
   src: local('Raleway Black Italic'), local('Raleway-BlackItalic'), url(https://fonts.gstatic.com/s/raleway/v12/1Ptpg8zYS_SKggPNyCgwzqZ_AtCb.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
+*::selection {
+  background-color: rgb(251, 255, 0)
+}
 
 header {
   position: fixed;
   font-family: 'Raleway';
   z-index: 1;
   margin: -20px 0 0 20px;
+  z-index: 5;
 }
 
 header > h2 {
@@ -65,11 +60,11 @@ header > h2 {
   right: 0;
   top: 0;
   align-items: center;
-  mix-blend-mode: screen;
+  mix-blend-mode: darken;
   justify-content: center;
-  background: white;
+  background:#fff;
   cursor: default;
-  z-index: -1;
+  z-index: 2;
   box-sizing: border-box;
   height: 100%
 
@@ -80,16 +75,17 @@ header > h2 {
   display: inline;
   word-break: break-word;
   line-height: 1.2em;
-  /*text-shadow: 7px 7px #000;*/
+  text-shadow: 7px 7px #000;
 }
 
 video { 
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   object-fit: cover;
   object-position: center;
-  z-index: -2;
+  z-index: 5 ;
+  mix-blend-mode: screen;
 }
 
 section>div{
@@ -97,54 +93,97 @@ section>div{
   text-align: right;
   line-height: 1.5em;
   height: 80vh;
-  
+  /*position: relative;
+  z-index: 2;*/
+  /*mix-blend-mode: darken;*/
 }
 
 section>div>h2 {
   font-family: 'Microsoft JhengHei';
-  color: #df4051;
-  padding-top: 80vh;
+  color: #fff;
+  /*padding-top: 80vh;*/
   transition: all 0.3s;
-  top: 0;
+  top: 80vh;
   right: 20px;
+  z-index: 999;
+  background-color: #df4051;
+  box-shadow: 7px 7px #000;
+  opacity: 0;
 }
 
-section>div:nth-child(4) {
-  background-image: radial-gradient(#fff 3px, transparent 3px);
+section>div:nth-child(3) {
+  padding: 0;
+  background-image: radial-gradient(#df4051 3px, transparent 3px);
   background-size: 12px 12px;
   background-position: 0 0, 180px 180px;
   grid-row: 4;
   grid-column: 3;
 }
+
+
+section>div:nth-child(4) {
+  background-image: radial-gradient(#b9f1f1 3px, transparent 3px);
+  background-size: 12px 12px;
+  background-position: 0 0, 180px 180px;
+  grid-row: 4;
+  grid-column: 3;
+}
+
+
+
 section>div:nth-child(5) {
-  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/3_purple-01.jpg');
-  mix-blend-mode: multiply;
+  background-image: url('../img/bg0.jpg');
+
   background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat
   
 }
 section>div:nth-child(6) {
-  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/03.jpg');
-  mix-blend-mode: multiply
+  background-image: url('../img/bg1.jpg');
+
 }
+@keyframes gotopscrool {
+  100%{
+    background-position-y: 250px
+  }
+}
+
+@keyframes gotopscrool_goleft {
+  100%{
+    background-position-x: -374px
+  }
+}
+
 section>div:nth-child(7) {
-  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/2_pink-02.jpg');
-  mix-blend-mode: multiply
+  background-image:  url('../img/bg2.gif');
+  background-color: #ff4b5e;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  animation: gotopscrool 5s infinite linear
 }
 
 section>div:nth-child(8) {
-  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/2_pink-03.jpg');
-  mix-blend-mode: multiply
+  background-image: url('../img/bg3.jpg');
+  background-position: center;
+  background-size: cover
 }
 
 section>div:nth-child(9) {
-  background-image: url('https://cdn.pazzo.com.tw/P_MAINPAGE_W/2018SS/080818/effect/4_yellow-01.jpg');
-  mix-blend-mode: multiply
+  background: url('../img/20180811_170405.gif') center fixed;
+}
+
+section>div:nth-child(10) {
+  background: url('../img/git.png') repeat-x left center fixed #d5a48e;
+  animation: gotopscrool_goleft 5s infinite linear
+}
+
+section>div:nth-child(11) {
+  background: url('../img/bg4.jpg') center;
 }
 
 .Opening{
-  padding-bottom: 200vh;
+  padding-bottom: 150vh;
   position: relative;
 }
 
@@ -213,7 +252,8 @@ footer {
   bottom: 20px;
   width: 150px;
   left: 20px;
-  text-align: center
+  text-align: center;
+  z-index: 5;
 }
 .About > ul > li > ul{
   padding: 0 0 0 20px;
@@ -258,5 +298,38 @@ footer {
   transform: rotate(180deg)
 }
 
-
-
+@media screen and (orientation: portrait) and (max-width: 1024px){
+  header > h2{
+    display: none
+  }
+  .rotateGlasses{
+    width: 100px;
+  }
+  .videoMask, video{
+    top: 15vh
+  }
+  .videoMask h1{
+    font-size: 15vw;
+  }
+  section>div>h2{
+    font-size: 2vh;
+    max-width: 80vw;
+    top: auto;
+    bottom: 15vh
+  }
+  footer{
+    width: 40px
+  }
+  .About{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 20px 100px 20px
+  }
+  .About > ul{
+    margin: 0 0 60px 0;
+  }
+  .About > ul > li{
+    width: 100%;
+    padding: 10px 0;
+  }
+}

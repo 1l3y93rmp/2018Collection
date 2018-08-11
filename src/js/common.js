@@ -3,6 +3,7 @@ $(function() {
     var $videoMaskHeight
     var $videoMaskWidth
     var $video = $('video')
+    var $divVideoMask = $('div.videoMask')
     var $h2Title= $('section>div>h2')
     var h2OffsetTop = []
     var $rotateGlasses = $('.rotateGlasses')
@@ -22,7 +23,7 @@ $(function() {
         $videoMaskHeight = $videoMask.innerHeight()
         $videoMaskWidth = $videoMask.innerWidth()
         if ($videoMaskWidth > $videoMaskHeight) {
-            $video.attr('width', $videoMaskWidth+20)
+            $video.attr('width', $videoMaskWidth+50)
             $video.removeAttr('height')
         } else {
             $video.attr('height', $videoMaskHeight)
@@ -41,7 +42,8 @@ $(function() {
                 })
             } else {
                 $h2Title.eq(i).css({
-                    'opacity': 0
+                    'opacity': 0,
+                    'position': 'static'
                 })
             }
         }
@@ -49,13 +51,17 @@ $(function() {
 
     function stickyTitle (p) {
         if (p + $(window).innerHeight() > $('.About').offset().top){
-            $('div.videoMask, video').css({
+            $divVideoMask.css({
                 'bottom': 120,
                 'position': 'absolute',
                 'top': 'auto',
                 'height': 'auto'})
         } else {
-            $('div.videoMask, video').removeAttr('style')
+            $divVideoMask.css({
+                'bottom': '',
+                'position': '',
+                'top': '',
+                'height': ''})
         }
     }
 
@@ -67,7 +73,21 @@ $(function() {
         })
     }
 
+    function chackBrowser () {
+        var parser = new UAParser();
+        var result = parser.getResult();
+
+        var name = result.browser.name;
+
+        if (name === 'Edge' || name === 'ie'){
+            $video.hide()
+            $('.videoMask').css('background','none')
+        }
+    }
+
     function init () {
+
+        chackBrowser()
         AOS.init()
         chackVideoMask()
         chackh2TitleTop()
