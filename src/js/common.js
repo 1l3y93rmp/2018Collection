@@ -23,7 +23,7 @@ $(function() {
         $videoMaskHeight = $videoMask.innerHeight()
         $videoMaskWidth = $videoMask.innerWidth()
         if ($videoMaskWidth > $videoMaskHeight) {
-            $video.attr('width', $videoMaskWidth+50)
+            $video.attr('width', $videoMaskWidth)
             $video.removeAttr('height')
         } else {
             $video.attr('height', $videoMaskHeight)
@@ -43,7 +43,7 @@ $(function() {
             } else {
                 $h2Title.eq(i).css({
                     'opacity': 0,
-                    'position': 'static'
+                    'position': ''
                 })
             }
         }
